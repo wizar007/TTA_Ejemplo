@@ -27,6 +27,8 @@
     <!--Strings Test-->
     <string name="button_send">Enviar</string>
     <string name="button_hint">Ver Ayuda</string>
+    <string name="toast_fail">Has fallado!</string>
+    <string name="toast_success">Has Acertado!</string>
 
     <!--Strings Exercise-->
     <string name="button_send_file">Enviar Fichero</string>
