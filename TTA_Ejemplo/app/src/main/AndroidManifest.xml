@@ -16,13 +16,14 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu" />
-
-        <activity android:name=".TestActivity"
-            android:label="@string/title_activity_test" ></activity>
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test" />
+        <activity android:name=".ExerciseActivity"
+            android:label="@string/title_activity_exercise"></activity>
     </application>
 
 </manifest>

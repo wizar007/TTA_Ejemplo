@@ -3,6 +3,8 @@
     <string name="title_activity_login">Alumno de TTA</string>
     <string name="title_activity_menu">Evaluación de TTA</string>
     <string name="title_activity_test">Nuevo Test</string>
+    <string name="title_activity_exercise">Nuevo Ejercicio</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_dni">Introduce DNI</string>
@@ -22,4 +24,13 @@
     <string name="button_newtest">Nuevo Test</string>
     <string name="button_newexer">Nuevo Ejercicio</string>
     <string name="button_seguimiento">Seguimiento</string>
+    <!--Strings Test-->
+    <string name="button_send">Enviar</string>
+    <string name="button_hint">Ver Ayuda</string>
+
+    <!--Strings Exercise-->
+    <string name="button_send_file">Enviar Fichero</string>
+    <string name="button_take_photo">Sacar foto</string>
+    <string name="button_record_audio">Grabar Audio</string>
+    <string name="button_record_video">Grabar Video</string>
 </resources>

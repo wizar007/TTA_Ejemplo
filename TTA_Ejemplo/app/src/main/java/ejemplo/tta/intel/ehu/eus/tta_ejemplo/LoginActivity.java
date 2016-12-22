@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -42,6 +43,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Id to identity READ_CONTACTS permission request.
      */
+    public void login(View view)
+    {
+       /* Intent intent=new Intent(this.MenuActivity.class);
+        String login = ((EditText)findViewById(R.id.login)).getText().toString();
+        String passwd = ((EditText)findViewById(R.id.password)).getText().toString();
+        if(authenticate(login,passwd))
+        {
+            intent.putExtra(MenuActivity.EXTRA_LOGIN,login);
+            startActivity(intent);;
+        }*/
+    }
     private static final int REQUEST_READ_CONTACTS = 0;
 
     /**
