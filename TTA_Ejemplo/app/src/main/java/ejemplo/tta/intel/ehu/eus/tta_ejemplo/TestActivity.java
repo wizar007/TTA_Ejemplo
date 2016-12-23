@@ -34,7 +34,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void hint(View view)
     {
-        Layout layout=new LinearLayout();
+        LinearLayout layout=(LinearLayout) this.findViewById(R.id.test_layout);
         String advice="<html><body><h5>Prueba consejo</h5></body></html>";
         WebView web=new WebView(this);
         //web.loadUrl(advise);
