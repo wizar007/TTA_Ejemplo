@@ -35,6 +35,22 @@ public class ExerciseActivity extends AppCompatActivity {
         }
 
     }
+    public void recordVideo(View view)
+    {
+        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
+        {
+            Toast.makeText(this, R.string.no_micro, Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Intent intent=new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            if(intent.resolveActivity(getPackageManager())!=null)
+                startActivityForResult(intent, AUDIO_REQUEST_CODE);
+            else
+                Toast.makeText(this,R.string.no_app,Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode,int resultCode, Intent data)
