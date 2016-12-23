@@ -28,7 +28,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void hint()
     {
-        String advice="Prueba consejo"
+        String advice="Prueba consejo";
         WebView web=new WebView(this);
         //web.loadUrl(advise);
         web.loadData(advice,"text/html",null);
@@ -39,6 +39,20 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     }
     protected void getData()
     {
+        RadioGroup group= (RadioGroup)findViewById(R.id.test_choices);
+        RadioButton radio= new RadioButton(this);
+        radio.setText("Respuesta 1");
+        radio.setOnClickListener(this);
+        group.addView(radio);
+        radio.setText("Respuesta 2");
+        radio.setOnClickListener(this);
+        group.addView(radio);;
+        radio.setText("Respuesta 3");
+        radio.setOnClickListener(this);
+        group.addView(radio);
+        radio.setText("Respuesta 4");
+        radio.setOnClickListener(this);
+        group.addView(radio);
        /* Test test=data.getTest();
         TextView textWording=(TextView)findViewById(R.id.test_enunciado);
         textWording.setText(test.getWording());
@@ -61,6 +75,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void send()
     {
+
        /* RadioGroup group= (RadioGroup)findViewById(R.id.test_choices);
         int choices=group.getChildCount();
         for(int i=0; i<choices;i++)

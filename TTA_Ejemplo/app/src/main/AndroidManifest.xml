@@ -14,16 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:name=".LoginActivity">
+        </activity>
         <activity
             android:name=".MenuActivity"
-            android:label="@string/title_activity_menu" />
+            android:label="@string/title_activity_menu"></activity>
         <activity
             android:name=".TestActivity"
-            android:label="@string/title_activity_test" />
-        <activity android:name=".ExerciseActivity"
-            android:label="@string/title_activity_exercise"></activity>
+            android:label="@string/title_activity_test"></activity>
+        <activity
+            android:name=".ExerciseActivity"
+            android:label="@string/title_activity_exercise" />
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
