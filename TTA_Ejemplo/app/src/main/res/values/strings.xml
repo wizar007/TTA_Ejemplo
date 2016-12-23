@@ -5,6 +5,9 @@
     <string name="title_activity_test">Nuevo Test</string>
     <string name="title_activity_exercise">Nuevo Ejercicio</string>
 
+    <!-- Features-->
+    <string name="no_micro">No tienes Microfono O.O</string>
+    <string name="no_app">ups</string>
 
     <!-- Strings related to login -->
     <string name="prompt_dni">Introduce DNI</string>
