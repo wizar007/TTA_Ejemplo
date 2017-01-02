@@ -20,6 +20,10 @@ import android.widget.VideoView;
 
 import junit.framework.Test;
 
+import java.io.IOException;
+
+import ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.views.AudioPlayer;
+
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
     int correct=1;
     //Layout layout=findViewById(R.id.test_layout);
@@ -42,6 +46,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     {
         RadioGroup group = (RadioGroup) findViewById(R.id.test_choices);
         int selected = group.getCheckedRadioButtonId()-1;
+
 
 
         switch(selected) {
@@ -71,6 +76,16 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 showVideo("http://u017633.ehu.eus:28080/static/ServidorTta/AndroidManifest.mp4");
                 break;
             case 4:
+                final Thread thread = new Thread(new Runnable() {
+                    public void run() {
+                                            }});
+                AudioPlayer audioPlay = new AudioPlayer(findViewById(R.id.test_layout),thread);
+                try {
+                    audioPlay.setAudioUri(Uri.parse("http://u017633.ehu.eus:28080/static/ServidorTta/AndroidManifest.mp4"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 break;
 
         }
@@ -97,8 +112,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         radio4.setOnClickListener(this);
         group.addView(radio4);
         RadioButton radio5= new RadioButton(this);
-        radio4.setText("Respuesta 5");
-        radio4.setOnClickListener(this);
+        radio5.setText("Respuesta 5");
+        radio5.setOnClickListener(this);
         group.addView(radio5);
        /* Test test=data.getTest();
         TextView textWording=(TextView)findViewById(R.id.test_enunciado);
@@ -151,7 +166,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private void showVideo(String advise) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.test_layout);
         VideoView video = new VideoView(this);
-        video.setVideoURI(Uri.parse("http://u017633.ehu.eus:28080/static/ServidorTta/AndroidManifest.mp4"));
+        video.setVideoURI(Uri.parse(advise));
 
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         video.setLayoutParams(params);
@@ -174,4 +189,5 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         layout.addView(video);
 
     }
+
 }
