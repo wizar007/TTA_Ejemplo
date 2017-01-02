@@ -7,7 +7,8 @@
 
     <!-- Features-->
     <string name="no_micro">No tienes Microfono O.O</string>
-    <string name="no_app">ups</string>
+    <string name="no_camera">No tienes Camara</string>
+    <string name="no_app">No tienes ninguna app, para esta función</string>
 
     <!-- Strings related to login -->
     <string name="prompt_dni">Introduce DNI</string>
