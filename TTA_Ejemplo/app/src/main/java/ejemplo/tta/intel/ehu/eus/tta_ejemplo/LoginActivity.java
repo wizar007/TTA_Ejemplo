@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity  {
     /**
      * Id to identity READ_CONTACTS permission request.
      */
-    public void login(View view)
+        public void login(View view)
     {
         Intent intent=new Intent(this,MenuActivity.class);
         String login = ((EditText)findViewById(R.id.login)).getText().toString();
