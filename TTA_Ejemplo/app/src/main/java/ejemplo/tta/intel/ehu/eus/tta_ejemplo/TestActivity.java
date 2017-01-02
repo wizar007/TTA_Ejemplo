@@ -67,6 +67,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case 3:
                 //se reproduce el video
+                //showVideo("http://techslides.com/demos/sample-videos/small.mp4");
                 showVideo("http://u017633.ehu.eus:28080/static/ServidorTta/AndroidManifest.mp4");
                 break;
             case 4:
@@ -150,7 +151,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private void showVideo(String advise) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.test_layout);
         VideoView video = new VideoView(this);
-        video.setVideoURI(Uri.parse(advise));
+        video.setVideoURI(Uri.parse("http://u017633.ehu.eus:28080/static/ServidorTta/AndroidManifest.mp4"));
 
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         video.setLayoutParams(params);
