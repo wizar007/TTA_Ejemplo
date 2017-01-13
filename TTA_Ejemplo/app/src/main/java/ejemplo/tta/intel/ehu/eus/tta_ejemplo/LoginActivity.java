@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity  {
         boolean validez=false;
         String userTest="prueba";
         String passTest="1234";
+        String path=getString(R.string.path_base)+getString(R.string.Userstatus);
 
 
         if(login.equals(userTest) && passwd.equals(passTest))
