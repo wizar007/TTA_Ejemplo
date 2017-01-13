@@ -79,7 +79,7 @@ public class RestClient {
             conn=getConnection(path);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            PrintWriter pw = new PrintWriter(conn.getOutputStream())
+            PrintWriter pw = new PrintWriter(conn.getOutputStream());
             pw.print(json.toString());
             return conn.getResponseCode();
 
