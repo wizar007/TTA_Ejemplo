@@ -6,12 +6,13 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 
 
+import ejemplo.tta.intel.ehu.eus.tta_ejemplo.TestActivity;
 import ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo.User;
 
 /**
  * Created by mikel on 13/01/17.
  */
-public class UserTask<T> extends AsyncTask<String,Void,T> {
+public class UserTask extends AsyncTask<String,Void,User> {
     protected final Context context;
     private final ProgressDialog dialog;
     private Exception e;
@@ -29,9 +30,27 @@ public class UserTask<T> extends AsyncTask<String,Void,T> {
     }
 
     @Override
-    protected T doInBackground(String... params)
+    protected User doInBackground(String... params)
     {
-        T user=null;
+        User user=null;
+        String path=params[0];
+        String dni=params[1];
+        String passwd=params[2];
+
+        path=path+"?dni="+dni;
+
+        RestClient rest=new RestClient(path);
+        rest.setHttpBasicAuth(dni,passwd);
+        try
+        {
+            rest.getJson(path);
+        }catch(Exception e)
+        {
+            
+
+        }
+
+
 
         return user;
     }

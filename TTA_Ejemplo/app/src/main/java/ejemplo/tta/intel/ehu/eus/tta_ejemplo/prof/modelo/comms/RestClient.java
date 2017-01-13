@@ -12,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by mikel on 13/01/17.
@@ -78,6 +79,43 @@ public class RestClient {
             PrintWriter pw = new PrintWriter(conn.getOutputStream());
             pw.print(json.toString());
             return conn.getResponseCode();
+
+        }finally {
+            if(conn!=null)
+            {
+                conn.disconnect();
+            }
+        }
+    }
+    public JSONObject getJson(String path) throws IOException, Exception{
+        JSONObject jsonob=new JSONObject();
+        HttpURLConnection conn=null;
+        String line;
+        try{
+            conn=getConnection(path);
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+
+            PrintWriter pw = new PrintWriter(conn.getOutputStream());
+            if(200==conn.getResponseCode())
+            {
+                BufferedReader rd=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                line=rd.readLine();
+                try
+                {
+                    jsonob=new JSONObject(line);
+                }catch(Exception e){
+
+
+            }
+
+
+            }
+            else
+            {
+                throw new Exception("Error /"+conn.getResponseCode());
+            }
+            return jsonob;
 
         }finally {
             if(conn!=null)
