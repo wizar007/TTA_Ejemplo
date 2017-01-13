@@ -3,7 +3,10 @@ package ejemplo.tta.intel.ehu.eus.tta_ejemplo;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +32,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +64,7 @@ public class LoginActivity extends AppCompatActivity  {
         String userTest="prueba";
         String passTest="1234";
 
+
         if(login.equals(userTest) && passwd.equals(passTest))
         {
             validez=true;
@@ -72,5 +77,24 @@ public class LoginActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
     }
+    protected boolean checkConnection(){
+        boolean con;
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connMgr.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected())
+        {
+            Toast.makeText(getApplicationContext(),"Conectado a Internet",Toast.LENGTH_SHORT).show();
+            con=true;//fetch data
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Error de conexion",Toast.LENGTH_SHORT).show();
+            con=false;
+        }
+        return con;
+
+    }
+
+
 }
 
