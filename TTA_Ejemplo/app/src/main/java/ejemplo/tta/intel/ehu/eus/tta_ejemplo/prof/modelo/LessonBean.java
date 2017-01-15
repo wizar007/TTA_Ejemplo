@@ -3,10 +3,16 @@ package ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo;
 /**
  * Created by mikel on 15/01/17.
  */
-public class lessonBean {
+public class LessonBean {
     private int id;
     private int number;
     private String title;
+    public LessonBean(int id, int number,String title)
+    {
+        this.setId(id);
+        this.setNumber(number);
+        this.setTitle(title);
+    }
 
 
     public int getId() {

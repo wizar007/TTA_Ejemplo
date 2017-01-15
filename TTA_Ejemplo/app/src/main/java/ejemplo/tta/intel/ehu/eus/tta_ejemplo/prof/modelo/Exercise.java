@@ -6,7 +6,14 @@ package ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo;
 public class Exercise {
     private int id;
     private String wording;
-    private lessonBean lesson;
+    private LessonBean lesson;
+
+    public Exercise(int id, String wording,LessonBean lesson)
+    {
+        this.setId(id);
+        this.setWording(wording);
+        this.setLesson(lesson);
+    }
 
 
     public int getId() {
@@ -24,11 +31,11 @@ public class Exercise {
     public void setWording(String wording) {
         this.wording = wording;
     }
-    public lessonBean getLesson()
+    public LessonBean getLesson()
     {
         return lesson;
     }
-    public void setLesson(lessonBean lesson)
+    public void setLesson(LessonBean lesson)
     {
         this.lesson=lesson;
     }
