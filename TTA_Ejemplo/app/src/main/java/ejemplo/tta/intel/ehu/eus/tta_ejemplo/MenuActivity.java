@@ -15,7 +15,7 @@ public final static String EXTRA_LOGIN="es.tta.ejemplo31.login";
 
         Intent intent = getIntent();
         TextView textLogin = (TextView)findViewById(R.id.login);
-      //  textLogin.setText(intent.getStringExtra(EXTRA_LOGIN));
+      //  textLogin.setText(intent.getStringExtra(EXTRA_LOGIN)); 
     }
     public void test(View view)
     {
