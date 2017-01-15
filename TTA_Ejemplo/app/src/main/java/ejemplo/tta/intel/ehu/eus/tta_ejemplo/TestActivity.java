@@ -43,7 +43,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_test);
-        //getData();
         final String path=getString(R.string.path_base);
         SharedPreferences myprefs=getSharedPreferences("user",0);
         final String login=myprefs.getString("login",null);
@@ -215,12 +214,29 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         int choices=group.getChildCount();
         for(int i=0; i<choices;i++)
             group.getChildAt(i).setEnabled(false);
-       // layout.removeView(findViewById(R.id.button_send_test));
+        View selected=group.findViewById(group.getCheckedRadioButtonId());
+        final int selectednum=group.indexOfChild(selected);
+        SharedPreferences myprefs=getSharedPreferences("user",0);
+        final String login=myprefs.getString("login",null);
+        final String passwd=myprefs.getString("passwd",null);
+        final String path=getString(R.string.path_base);
 
-        int selected=group.getCheckedRadioButtonId()-1;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RestClient rest=new RestClient(path);
+                rest.setHttpBasicAuth(login,passwd);
+                uploadResult(selectednum);
+
+            }
+        }).start();
+
+
+
+
         group.getChildAt(correct).setBackgroundColor(Color.GREEN);
         Toast.makeText(getApplicationContext(),"Has dicho algo",Toast.LENGTH_SHORT);
-        if(selected != correct)
+        if(selectednum != correct)
         {
             findViewById(group.getCheckedRadioButtonId()).setBackgroundColor(Color.RED);
             Toast.makeText(getApplicationContext(),R.string.toast_fail, Toast.LENGTH_SHORT);
@@ -234,6 +250,24 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(),R.string.toast_success,Toast.LENGTH_SHORT);
         }
         findViewById(R.id.button_send_test).setVisibility(View.INVISIBLE);
+
+    }
+
+
+    public int uploadResult(int choiceId){
+        try{
+            JSONObject json = new JSONObject();
+            json.put("userId", 1);
+            json.put("choiceId",choiceId);
+            return rest.postJson(json,"postChoice");
+
+        }catch (Exception e)
+        {
+            return -1;
+        }
+
+
+
 
     }
     private void showVideo(String advise) {
