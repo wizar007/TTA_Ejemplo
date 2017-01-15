@@ -6,7 +6,7 @@
     <string name="title_activity_exercise">Nuevo Ejercicio</string>
 
     <!--Paths-->
-    <string name="path_base">http://u017633.ehu.eus:28080/ServidorTta/rest/tta/</string>
+    <string name="path_base">http://u017633.ehu.eus:28080/ServidorTta/rest/tta</string>
     <string name="Userstatus">getStatus</string>
 
     <!-- Features-->

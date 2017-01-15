@@ -11,6 +11,11 @@ public class User {
     private int nextTest;
     private int nextExercise;
 
+    public User()
+    {
+
+    }
+
     public User(int id,String user,int lessonNumber, String lessonTitle, int nextTest, int nextExercise )
     {
         this.setId(id);
@@ -21,52 +26,52 @@ public class User {
         this.setNextExercise(nextExercise);
     }
 
-    private int getId()
+    public int getId()
     {
         return this.id;
     }
-    private void setId(int id)
+    public void setId(int id)
     {
         this.id=id;
     }
-    private String getUser()
+    public String getUser()
     {
         return this.user;
     }
-    private void setUser(String user)
+    public void setUser(String user)
     {
         this.user=user;
     }
-    private int getLessonNumber()
+    public int getLessonNumber()
     {
         return this.lessonNumber;
     }
-    private void setLessonNumber(int lessonNumber)
+    public void setLessonNumber(int lessonNumber)
     {
         this.lessonNumber=lessonNumber;
     }
-    private String getLessonTitle()
+    public String getLessonTitle()
     {
         return this.lessonTitle;
     }
 
-    private void setLessonTitle(String lessonTitle)
+    public void setLessonTitle(String lessonTitle)
     {
         this.lessonTitle=lessonTitle;
     }
-    private int getNextTest()
+    public int getNextTest()
     {
         return this.nextTest;
     }
-    private void setNextTest(int nextTest)
+    public void setNextTest(int nextTest)
     {
         this.nextTest=nextTest;
     }
-    private int getNextExercise()
+    public int getNextExercise()
     {
         return this.nextExercise;
     }
-    private void setNextExercise(int nextExercise)
+    public void setNextExercise(int nextExercise)
     {
         this.nextExercise=nextExercise;
     }

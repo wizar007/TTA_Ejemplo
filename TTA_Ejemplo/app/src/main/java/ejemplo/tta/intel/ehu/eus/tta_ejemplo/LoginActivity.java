@@ -37,6 +37,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo.User;
+import ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo.comms.ProgressTask;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -64,6 +67,19 @@ public class LoginActivity extends AppCompatActivity  {
         String userTest="prueba";
         String passTest="1234";
         String path=getString(R.string.path_base)+getString(R.string.Userstatus);
+        new ProgressTask<User>(this)
+        {
+
+            @Override
+            protected User work() throws Exception {
+                return null;
+            }
+
+            @Override
+            protected void onFinish(User result) {
+
+            }
+        }.execute();
 
 
         if(login.equals(userTest) && passwd.equals(passTest))

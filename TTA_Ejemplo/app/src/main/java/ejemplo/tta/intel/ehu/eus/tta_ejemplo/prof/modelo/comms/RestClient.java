@@ -2,6 +2,7 @@ package ejemplo.tta.intel.ehu.eus.tta_ejemplo.prof.modelo.comms;
 
 import android.util.Base64;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -87,7 +88,7 @@ public class RestClient {
             }
         }
     }
-    public JSONObject getJson(String path) throws IOException, Exception{
+    /*public JSONObject getJson(String path) throws IOException, Exception{
         JSONObject jsonob=new JSONObject();
         HttpURLConnection conn=null;
         String line;
@@ -123,6 +124,10 @@ public class RestClient {
                 conn.disconnect();
             }
         }
+    }*/
+    public JSONObject getJson(String path) throws IOException,JSONException
+    {
+        return new JSONObject(getString(path));
     }
 
     public void setHttpBasicAuth(String user, String passwd)
