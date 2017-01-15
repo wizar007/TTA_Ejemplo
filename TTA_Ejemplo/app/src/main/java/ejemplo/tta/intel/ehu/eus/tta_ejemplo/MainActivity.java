@@ -1,6 +1,7 @@
 package ejemplo.tta.intel.ehu.eus.tta_ejemplo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         final Intent intent=new Intent(this,MenuActivity.class);
         final String login = ((EditText)findViewById(R.id.login)).getText().toString();
         final String passwd = ((EditText)findViewById(R.id.password)).getText().toString();
+        SharedPreferences myprefs= this.getSharedPreferences("user",0);
+        myprefs.edit().putString("login",login).commit();
+        myprefs.edit().putString("passwd",passwd).commit();
         final String path=pathBase;
 
         new ProgressTask<User>(this)
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onFinish(User result) {
                 usuario=result;
                 //Toast.makeText(context,"Bienvenido "+result.getUser(),Toast.LENGTH_SHORT);
+
                 intent.putExtra(MenuActivity.EXTRA_LESSON,result.getLessonTitle());
                     intent.putExtra(MenuActivity.EXTRA_LOGIN, result.getUser());
                 intent.putExtra(MenuActivity.EXTRA_N_LESSON,result.getLessonNumber());
