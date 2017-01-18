@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if(login.equals(userTest) && passwd.equals(passTest))
         {
             validez=true;
-            Toast.makeText(getApplicationContext(),"El usuario ha entrado correctamente",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),"El usuario ha entrado correctamente",Toast.LENGTH_SHORT).show();
         }
 
         return validez;

@@ -221,6 +221,27 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         final String passwd=myprefs.getString("passwd",null);
         final String path=getString(R.string.path_base);
 
+        new ProgressTask<Test>(this)
+        {
+
+            @Override
+            protected Test work() throws Exception {
+                Test test=new Test();
+                RestClient rest=new RestClient(path);
+                rest.setHttpBasicAuth(login,passwd);
+                int respuesta=uploadResult(selectednum);
+                test.setWording("Ha devuelto: "+respuesta);
+
+                return test;
+            }
+
+            @Override
+            protected void onFinish(Test result) {
+                Toast.makeText(getApplicationContext(),result.getWording(), Toast.LENGTH_SHORT).show();
+
+            }
+        }.execute();
+/*
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -229,17 +250,17 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 uploadResult(selectednum);
 
             }
-        }).start();
+        }).start();*/
 
 
 
 
         group.getChildAt(correct).setBackgroundColor(Color.GREEN);
-        Toast.makeText(getApplicationContext(),"Has dicho algo",Toast.LENGTH_SHORT);
+        //Toast.makeText(getApplicationContext(),"Has dicho algo",Toast.LENGTH_SHORT);
         if(selectednum != correct)
         {
             findViewById(group.getCheckedRadioButtonId()).setBackgroundColor(Color.RED);
-            Toast.makeText(getApplicationContext(),R.string.toast_fail, Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),R.string.toast_fail, Toast.LENGTH_SHORT).show();
             if(advise != null && !advise.isEmpty())
             {
                 findViewById(R.id.button_hint_test).setVisibility(View.VISIBLE);
@@ -247,26 +268,18 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         }else
         {
-            Toast.makeText(getApplicationContext(),R.string.toast_success,Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),R.string.toast_success,Toast.LENGTH_SHORT).show();
         }
         findViewById(R.id.button_send_test).setVisibility(View.INVISIBLE);
 
     }
 
 
-    public int uploadResult(int choiceId){
-        try{
+    public int uploadResult(int choiceId) throws Exception{
             JSONObject json = new JSONObject();
             json.put("userId", 1);
             json.put("choiceId",choiceId);
             return rest.postJson(json,"postChoice");
-
-        }catch (Exception e)
-        {
-            return -1;
-        }
-
-
 
 
     }
